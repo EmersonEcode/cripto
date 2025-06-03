@@ -1,0 +1,92 @@
+.header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    
+    
+}
+
+.content{
+    width: 100%;
+    border-bottom: solid 0.5px rgba(51, 48, 48, 1);
+    height: 100%;
+    position: relative;
+    
+}
+.title{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 50%;
+    padding: 1% 0% 2% 6%;
+    h2{
+        font-size: 35px;
+        color: white;
+        font-weight:300;
+    }
+    p{
+        color: #FFAFFA;
+        cursor: pointer;
+    }
+    p:hover{
+        color: #f8c6f5;
+        cursor: pointer;
+    }
+    span{
+        padding: 2px 8px 1px 8px;
+        border-radius: 5px;
+        background-color: #19191F;
+        color: white;
+        
+    }
+    span:hover{
+        color: rgb(196, 191, 191); 
+    }
+}
+
+.description{
+    
+    width: 85%;
+    display: flex;
+    flex-direction:row;
+    justify-content: space-between;
+}
+
+.filter{
+    padding: 1% 4% 2% 2%;
+    width: 50%;
+    height: 100%;
+    align-self: self-end;
+    display: flex;
+
+    flex-direction: column;
+    align-items:self-end;
+    span{
+        padding: 4px 8px 8px 8px;
+        border-radius: 15px;
+        background-color: #19191F;
+        color: white;
+        
+    }
+    span:hover{
+        color: rgb(196, 191, 191); 
+    }
+}
+
+.nav{
+    gap: 10px;
+    width: 60%;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+}
+
+.stakingList{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 2%;
+    
+}

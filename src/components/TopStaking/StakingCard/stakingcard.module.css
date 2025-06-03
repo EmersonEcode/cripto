@@ -1,0 +1,127 @@
+.card{
+    width: 90%;
+    display: flex;
+    padding: 15px;
+    flex-direction: column;
+    justify-content: space-between;
+    border: solid 0.5px rgba(51, 48, 48, 1);
+    border-radius: 10px;
+    color: white;
+    gap: 10px;
+    height: 100%;
+}
+
+.header{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    .logo{
+        width: 10%;
+        width: 45px;
+        height: 40px;
+        img{
+            width: 100%;
+            height: 100%;   
+        }
+    }
+    .title{
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        span{
+            color: #979393;
+            font-size: 14px;
+        }
+
+    }
+    .moreDetails{
+        width: 10%;
+    }
+}
+
+.description{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    .rewardRate{
+        p{
+            font-size: 40px;
+            font-weight: 200;
+        }
+        span{
+            color: #979393;
+            font-size: 14px;
+        }
+    }
+
+    .price{
+        p{
+            font-size: 15px;
+            font-weight: 200;
+        }
+        span{
+            color: #979393;
+            font-size: 14px;
+        }
+    }
+}
+
+.variation{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.variationNegative{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 20px;
+    width: 25px;
+    height: 25px;
+    border-radius: 4px;
+    padding: 4%;
+    font-size: 12px;
+    background-color: rgba(255,0, 15,0.15);
+    .iconCircle{
+       border-radius: 30px;
+       width: 100%;
+       height: 100%;
+       padding: 20%;
+       align-self: center;
+       background-color: #FF1500;
+       font-size: 10px;
+       align-items: center;
+       display: flex;
+       color: rgb(238, 235, 235);
+    }
+
+}
+.variationPositive{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 20px;
+    width: 25px;
+    height: 25px;
+    border-radius: 4px;
+    padding: 4%;
+    font-size: 12px;
+    background-color: rgba(0,255, 30,0.15);
+    .iconCircle{
+        border-radius: 30px;
+        width: 100%;
+        height: 100%;
+        padding: 20%;
+        align-self: center;
+        background-color: #00FF1E;
+        font-size: 20px;
+        align-items: center;
+        display: flex;
+        color: rgb(221, 221, 221);
+     }
+}

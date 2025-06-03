@@ -1,0 +1,24 @@
+header{
+    display: flex;
+    flex-direction: row;
+    background-color: #12141D;
+    width: 100%;
+    border-bottom: solid 0.5px rgba(51, 48, 48, 1);
+    
+}
+
+.title{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 20%;
+    padding: 2%;
+    color: white;
+    h1{
+       font-size: 40px;
+       font-weight: 400;
+       margin-left: auto;
+       margin-right: auto;
+    }
+    border-right: solid 0.5px rgba(51, 48, 48, 1);
+}
