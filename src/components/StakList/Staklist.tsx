@@ -1,11 +1,12 @@
 import React from "react";
-import { TopStakingContainer } from "../../hooks/TopStakingData";
-import styles from './staklist.module.css'
+import { TopStakingContainer } from "../TopStaking/TopStakingContainer";
+import styles from './staklist.module.css';
+
 
 export const StakList = () => {
     return (
         <section className={styles.content}>
-            <TopStakingContainer perPage={1} stakingQuatidade={100} titleDataLocalStoreged="topStak" typeFetch="all" styleContainerData={{
+            <TopStakingContainer perPage={1} titleDataLocalStoreged="topStak" typeFetch="all" styleContainerData={{
                 display: 'grid',
                 flexDirection: 'column',
                 gridTemplateColumns: 'repeat(1, 1fr)',

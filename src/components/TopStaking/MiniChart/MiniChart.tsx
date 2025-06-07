@@ -55,6 +55,7 @@ export const MiniChart: React.FC<MiniChartProps> = ({ coinId }) => {
     try {
       setLoading(true);
 
+      // Pega dados da moeda em USD
       const response = await axios.get(`https://api.coingecko.com/api/v3/coins/${coinId}`, {
         params: {
           localization: false,
@@ -66,18 +67,14 @@ export const MiniChart: React.FC<MiniChartProps> = ({ coinId }) => {
         },
       });
 
-      const sparklineUSD = response.data.market_data.sparkline_7d.price;
+      const sparklineUSD: number[] = response.data.market_data.sparkline_7d.price;
 
-      const convertedSparkline = await Promise.all(
-        sparklineUSD.map(async (item) => {
-          try {
-            return await ConvertCoin(item);
-          } catch (e) {
-            console.warn("Erro na conversão:", e);
-            return 0;
-          }
-        })
-      );
+      // Pega cotação USD -> BRL UMA vez só
+      const usdToBrlRate = await ConvertCoin(1);
+      if (!usdToBrlRate) throw new Error("Não foi possível obter a cotação USD-BRL");
+
+      // Multiplica todos os preços pela cotação BRL para converter o sparkline
+      const convertedSparkline = sparklineUSD.map(price => price * usdToBrlRate);
 
       const firstPrice = convertedSparkline[0];
       const lastPrice = convertedSparkline[convertedSparkline.length - 1];
@@ -85,6 +82,7 @@ export const MiniChart: React.FC<MiniChartProps> = ({ coinId }) => {
 
       applyChartData(convertedSparkline, lastPrice, change);
 
+      // Salva no cache local com timestamp
       localStorage.setItem(
         cacheKey,
         JSON.stringify({
@@ -107,7 +105,7 @@ export const MiniChart: React.FC<MiniChartProps> = ({ coinId }) => {
     }
   };
 
-  useEffect(() => { 
+  useEffect(() => {
     setPriceData([]);
     fetchDataWithCache();
 
@@ -139,7 +137,6 @@ export const MiniChart: React.FC<MiniChartProps> = ({ coinId }) => {
         fontSize: 10,
         color: '#ffffff60'
       }
-    
     },
     fill: {
       type: "gradient",

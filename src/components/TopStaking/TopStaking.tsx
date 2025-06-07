@@ -2,7 +2,7 @@ import React from "react";
 import styles from './top-staking.module.css';
 import { FiChevronDown } from 'react-icons/fi';
 import { StakingCard } from "./StakingCard/StakingCard";
-import { TopStakingContainer } from "../../hooks/TopStakingData";
+import { TopStakingContainer } from "./TopStakingContainer";
 import { StakList } from "../StakList/Staklist";
 
 export const TopStaking = () => {
