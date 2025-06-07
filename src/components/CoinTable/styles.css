@@ -1,0 +1,148 @@
+.crypto-dashboard {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 2rem;
+          color: #f8f9fa;
+          font-family: 'Inter', sans-serif;
+          margin-bottom: 50px
+        }
+        
+        .header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 1.5rem;
+        }
+        
+        h1 {
+          font-size: 1.8rem;
+          font-weight: 600;
+          margin: 0;
+        }
+        
+        .search-input {
+          padding: 0.75rem 1rem;
+          border-radius: 8px;
+          border: 1px solid #495057;
+          background-color: #212529;
+          color: #f8f9fa;
+          width: 300px;
+          font-size: 1rem;
+          transition: all 0.2s;
+        }
+
+        .search-container {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+          gap: 10px
+        }
+        
+        .search-input:focus {
+          outline: none;
+          border-color: #6c757d;
+          box-shadow: 0 0 0 2px rgba(108, 117, 125, 0.25);
+        }
+        
+        .table-container {
+          background-color: #212529;
+          border-radius: 8px;
+          overflow: hidden;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        table {
+          width: 100%;
+          border-collapse: collapse;
+        }
+        
+        thead {
+          background-color: #343a40;
+        }
+        
+        th {
+          padding: 1rem;
+          text-align: left;
+          font-weight: 500;
+          color: #adb5bd;
+          text-transform: uppercase;
+          font-size: 0.875rem;
+          letter-spacing: 0.05em;
+        }
+        
+        .main-row {
+          border-bottom: 1px solid #343a40;
+          cursor: pointer;
+          transition: background-color 0.2s;
+        }
+        
+        .main-row:hover {
+          background-color: #2b3035;
+        }
+        
+        .main-row td {
+          padding: 1rem;
+        }
+        
+        .coin-info {
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+        }
+        
+        .coin-info img {
+          width: 28px;
+          height: 28px;
+          border-radius: 50%;
+        }
+        
+        .name {
+          font-weight: 500;
+          display: block;
+        }
+        
+        .symbol {
+          color: #6c757d;
+          font-size: 0.875rem;
+        }
+        
+        .positive {
+          color: #20c997;
+        }
+        
+        .negative {
+          color: #ff6b6b;
+        }
+        
+        .detail-row {
+          background-color: #2b3035;
+        }
+        
+        .detail-row td {
+          padding: 0;
+        }
+        
+        .details-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+          gap: 1rem;
+          padding: 1rem;
+        }
+        
+        .details-grid div {
+          display: flex;
+          justify-content: space-between;
+          padding: 0.5rem 0;
+          border-bottom: 1px solid #343a40;
+        }
+        
+        .details-grid span:first-child {
+          color: #adb5bd;
+        }
+        
+        .loading {
+          text-align: center;
+          padding: 2rem;
+          color: #adb5bd;
+        }

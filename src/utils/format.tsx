@@ -5,3 +5,12 @@ export const formatMoney = (value: number): string =>
       minimumFractionDigits: 2,
       maximumFractionDigits: 2
   }).format(value);
+
+
+export const formatPercentage = (value: number): string => {
+            return new Intl.NumberFormat('pt-BR', {
+              style: 'percent',  
+              minimumFractionDigits: 2,  
+              maximumFractionDigits: 2,
+            }).format(value);
+          };

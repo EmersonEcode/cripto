@@ -4,17 +4,12 @@ import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 import { MiniChart } from "../MiniChart/MiniChart";
 import { StakingRewardRate } from "../RewardRate/RewardRate";
 import { BsArrowDownLeft, BsArrowUpRight } from "react-icons/bs";
+import { formatPercentage } from "../../../utils/format";
+
 export const StakingCard = ({logo, symbol, typeMechanism, nameCrypto, rewardRate, variation, price, id, style}) => {
 
-
     const renderVariation = (value) => {
-        const formatPercentage = (value: number): string => {
-            return new Intl.NumberFormat('pt-BR', {
-              style: 'percent',  
-              minimumFractionDigits: 2,  
-              maximumFractionDigits: 2,
-            }).format(value);
-          };
+    
         if(value < 0){
             return (
             <div className={styles.variationNegative}>
@@ -49,7 +44,8 @@ export const StakingCard = ({logo, symbol, typeMechanism, nameCrypto, rewardRate
                 <div className={styles.rewardRate}>
                     
                     <div className={styles.rate}>
-                    <StakingRewardRate coinId={id} /> 
+                        <span>Taxa de reconpensa</span>
+                    <p>0,00</p>
                     </div>
                     <div className={styles.variation}>
                     {renderVariation(variation)}

@@ -1,4 +1,7 @@
 import React, { useEffect, useState, ChangeEvent } from 'react';
+import { FaSearch } from "react-icons/fa";
+import { formatMoney } from '../../utils/format';
+import "./styles.css"
 
 type CoinData = {
   id: string;
@@ -60,14 +63,6 @@ const CoinTable: React.FC = () => {
     coin.symbol.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  const formatCurrency = (value: number) => {
-    return new Intl.NumberFormat('pt-BR', {
-      style: 'currency',
-      currency: 'BRL',
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2
-    }).format(value);
-  };
 
   const formatLargeNumber = (value: number) => {
     return new Intl.NumberFormat('pt-BR').format(value);
@@ -82,14 +77,19 @@ const CoinTable: React.FC = () => {
   return (
     <div className="crypto-dashboard">
       <div className="header">
-        <h1>Market Overview</h1>
-        <input
+        <h1>Mercado de Ativos</h1>
+        
+         <div className="search-container">
+           <FaSearch size={20} />
+           <input
           type="text"
-          placeholder="Search coins..."
+          placeholder="Pesquisar moedas..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           className="search-input"
         />
+         </div>
+        
       </div>
 
       <div className="table-container">
@@ -119,12 +119,12 @@ const CoinTable: React.FC = () => {
                       <span className="symbol">{coin.symbol.toUpperCase()}</span>
                     </div>
                   </td>
-                  <td>{formatCurrency(coin.current_price)}</td>
+                  <td>{formatMoney(coin.current_price)}</td>
                   <td className={coin.price_change_percentage_24h >= 0 ? 'positive' : 'negative'}>
                     {formatPercentage(coin.price_change_percentage_24h)}
                   </td>
-                  <td>{formatCurrency(coin.total_volume)}</td>
-                  <td>{formatCurrency(coin.market_cap)}</td>
+                  <td>{formatMoney(coin.total_volume)}</td>
+                  <td>{formatMoney(coin.market_cap)}</td>
                 </tr>
                 {expandedRows.has(coin.market_cap_rank) && (
                   <tr className="detail-row">
@@ -132,15 +132,15 @@ const CoinTable: React.FC = () => {
                       <div className="details-grid">
                         <div>
                           <span>24h High:</span>
-                          <span>{formatCurrency(coin.high_24h)}</span>
+                          <span>{formatMoney(coin.high_24h)}</span>
                         </div>
                         <div>
                           <span>24h Low:</span>
-                          <span>{formatCurrency(coin.low_24h)}</span>
+                          <span>{formatMoney(coin.low_24h)}</span>
                         </div>
                         <div>
                           <span>All-Time High:</span>
-                          <span>{formatCurrency(coin.ath)} ({formatPercentage(coin.ath_change_percentage)})</span>
+                          <span>{formatMoney(coin.ath)} ({formatPercentage(coin.ath_change_percentage)})</span>
                         </div>
                         <div>
                           <span>Circulating Supply:</span>
@@ -162,148 +162,7 @@ const CoinTable: React.FC = () => {
         </table>
       </div>
 
-      <style jsx>{`
-        .crypto-dashboard {
-          max-width: 1200px;
-          margin: 0 auto;
-          padding: 2rem;
-          color: #f8f9fa;
-          font-family: 'Inter', sans-serif;
-          margin-bottom: 50px
-        }
-        
-        .header {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          margin-bottom: 1.5rem;
-        }
-        
-        h1 {
-          font-size: 1.8rem;
-          font-weight: 600;
-          margin: 0;
-        }
-        
-        .search-input {
-          padding: 0.75rem 1rem;
-          border-radius: 8px;
-          border: 1px solid #495057;
-          background-color: #212529;
-          color: #f8f9fa;
-          width: 300px;
-          font-size: 1rem;
-          transition: all 0.2s;
-        }
-        
-        .search-input:focus {
-          outline: none;
-          border-color: #6c757d;
-          box-shadow: 0 0 0 2px rgba(108, 117, 125, 0.25);
-        }
-        
-        .table-container {
-          background-color: #212529;
-          border-radius: 8px;
-          overflow: hidden;
-          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        
-        table {
-          width: 100%;
-          border-collapse: collapse;
-        }
-        
-        thead {
-          background-color: #343a40;
-        }
-        
-        th {
-          padding: 1rem;
-          text-align: left;
-          font-weight: 500;
-          color: #adb5bd;
-          text-transform: uppercase;
-          font-size: 0.875rem;
-          letter-spacing: 0.05em;
-        }
-        
-        .main-row {
-          border-bottom: 1px solid #343a40;
-          cursor: pointer;
-          transition: background-color 0.2s;
-        }
-        
-        .main-row:hover {
-          background-color: #2b3035;
-        }
-        
-        .main-row td {
-          padding: 1rem;
-        }
-        
-        .coin-info {
-          display: flex;
-          align-items: center;
-          gap: 0.75rem;
-        }
-        
-        .coin-info img {
-          width: 28px;
-          height: 28px;
-          border-radius: 50%;
-        }
-        
-        .name {
-          font-weight: 500;
-          display: block;
-        }
-        
-        .symbol {
-          color: #6c757d;
-          font-size: 0.875rem;
-        }
-        
-        .positive {
-          color: #20c997;
-        }
-        
-        .negative {
-          color: #ff6b6b;
-        }
-        
-        .detail-row {
-          background-color: #2b3035;
-        }
-        
-        .detail-row td {
-          padding: 0;
-        }
-        
-        .details-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-          gap: 1rem;
-          padding: 1rem;
-        }
-        
-        .details-grid div {
-          display: flex;
-          justify-content: space-between;
-          padding: 0.5rem 0;
-          border-bottom: 1px solid #343a40;
-        }
-        
-        .details-grid span:first-child {
-          color: #adb5bd;
-        }
-        
-        .loading {
-          text-align: center;
-          padding: 2rem;
-          color: #adb5bd;
-        }
-      `}</style>
+      
     </div>
   );
 };

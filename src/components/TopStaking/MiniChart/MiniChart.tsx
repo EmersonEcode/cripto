@@ -2,18 +2,13 @@ import React, { useEffect, useState } from "react";
 import ReactApexChart from "react-apexcharts";
 import axios from "axios";
 import { ConvertCoin } from "../../ConvertCoin/ConvertCoin";
-
+import { formatMoney } from "../../../utils/format";
 interface MiniChartProps {
   coinId: string;
 }
 
 const CACHE_EXPIRATION_TIME = 1000 * 60 * 15; // 15 minutos
 
-const formatMoney = (value: number): string =>
-  new Intl.NumberFormat("pt-BR", {
-    style: "currency",
-    currency: "BRL",
-  }).format(value);
 
 export const MiniChart: React.FC<MiniChartProps> = ({ coinId }) => {
   const [priceData, setPriceData] = useState<number[]>([]);
